@@ -26,13 +26,16 @@ mongoose.connect 'mongodb://localhost/example'
 
 #### View initialization 
 # Add Connect Assets.
-app.use assets()
+app.use assets
+	detectChanges: app.settings.env is "development"
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
  
 
 # Set View Engine.
 app.set 'view engine', 'jade'
+app.set "views","./assets/views"
+
 
 # [Body parser middleware](http://www.senchalabs.org/connect/middleware-bodyParser.html) parses JSON or XML bodies into `req.body` object
 app.use express.bodyParser()
