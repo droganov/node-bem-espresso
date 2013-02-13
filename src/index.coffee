@@ -34,7 +34,6 @@ css.root = '/'
 js.root  = '/'
 
 
-console.log app.settings.env is "development"
 #### Sprites
 if app.settings.env is "development"
 	sprite.sprites
