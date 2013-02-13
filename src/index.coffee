@@ -28,6 +28,10 @@ mongoose.connect 'mongodb://localhost/example'
 # Add Connect Assets.
 app.use assets
 	detectChanges: app.settings.env is "development"
+
+css.root = '/'
+js.root  = '/'
+
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
  
