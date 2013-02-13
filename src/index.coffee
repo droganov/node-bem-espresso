@@ -53,7 +53,7 @@ app.use express.static(process.cwd() + '/public')
 
 # Set View Engine.
 app.set 'view engine', 'jade'
-app.set "views","./assets/views"
+app.set "views","./assets/view"
 
 
 # [Body parser middleware](http://www.senchalabs.org/connect/middleware-bodyParser.html) parses JSON or XML bodies into `req.body` object
