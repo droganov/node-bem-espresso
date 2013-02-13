@@ -1,0 +1,16 @@
+{
+  "name": "header",
+  "checksum": "5df7ef507f0ae93fd3ceb870c33a38e1",
+  "shortsum": "5df7e",
+  "images": [
+    {
+      "name": "bg",
+      "filename": "bg.png",
+      "checksum": "757013025bb237b3320a399d291bc692",
+      "width": 600,
+      "height": 60,
+      "positionX": 0,
+      "positionY": 0
+    }
+  ]
+}

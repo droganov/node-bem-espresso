@@ -3,6 +3,7 @@ express = require 'express'
 stylus = require 'stylus'
 assets = require 'connect-assets'
 mongoose = require 'mongoose'
+sprite = require 'node-sprite'
 
 #### Basic application initialization
 # Create app instance.
@@ -31,6 +32,21 @@ app.use assets
 
 css.root = '/'
 js.root  = '/'
+
+
+console.log app.settings.env is "development"
+#### Sprites
+if app.settings.env is "development"
+	sprite.sprites
+		path: './assets/blocks/',
+		watch: true,
+		(err, result) ->
+			console.log result
+			# var globalSprite = result['global'];
+			# var animalsSprite = result['animals'];
+			# console.log(globalSprite.filename());
+			# console.log(animalsSprite.filename());
+			# console.log('animals/duck', animalsSprite.image('duck'));
 
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
