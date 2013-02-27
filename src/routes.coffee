@@ -25,6 +25,7 @@ module.exports  = (app) ->
   # If all else failed, show 404 page
   app.all '/*', (req, res)->
     console.warn "error 404: ", req.url
+    res.statusCode = 404
     res.render '404',404
 
 # render the page based on controller name, method and id
