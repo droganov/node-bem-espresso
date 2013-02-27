@@ -7,23 +7,23 @@
 
 module.exports  = (app) ->
   #   - _/_ -> controllers/index/index method
-  app.all '/', (req, res, next)->
-    routeMvc('index', 'index', req, res, next)
+  app.all "/", (req, res, next)->
+    routeMvc("index", "index", req, res, next)
 
   #   - _/**:controller**_  -> controllers/***:controller***/index method
-  app.all '/:controller' , (req, res, next)->
-    routeMvc(req.params.controller, 'index',req,res, next)
+  app.all "/:controller" , (req, res, next)->
+    routeMvc(req.params.controller, "index",req,res, next)
   
   #   - _/**:controller**/**:method**_ -> controllers/***:controller***/***:method*** method
-  app.all '/:controller/:method' , (req, res, next)->
+  app.all "/:controller/:method" , (req, res, next)->
     routeMvc(req.params.controller, req.params.method, req,res,next)
 
   #   - _/**:controller**/**:method**/**:id**_ -> controllers/***:controller***/***:method*** method with ***:id*** param passed
-  app.all '/:controller/:method/:id' , (req, res, next)->
+  app.all "/:controller/:method/:id" , (req, res, next)->
     routeMvc(req.params.controller, req.params.method,req,res, next)
 
   # If all else failed, show 404 page
-  app.all '/*', (req, res, next)->
+  app.all "/*", (req, res, next)->
     console.warn "error 404: ", req.url
     res.statusCode = 404
     routeMvc("error", "e404", req,res,next)
@@ -43,8 +43,7 @@ routeMvc = (controllerName, methodName, req, res, next)->
     # eval is evil, so sanitize it
     methodName = methodName.replace(/[^a-z0-9A-Z_-]/i,'')
     method = controller[methodName]
-    if method?
-      method req, res, next
+    method req, res, next if typeof method is "function"
   else
-    console.warn 'method not found: ' +methodName
+    console.warn "method not found: " + methodName
     next()
