@@ -27,8 +27,7 @@ mongoose.connect 'mongodb://localhost/example'
 
 #### View initialization 
 # Add Connect Assets.
-app.use assets
-	detectChanges: app.settings.env is "development"
+app.use assets {detectChanges: app.settings.env is "development"}
 
 css.root = '/'
 js.root  = '/'
