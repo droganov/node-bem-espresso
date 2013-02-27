@@ -23,14 +23,14 @@ module.exports  = (app) ->
     routeMvc(req.params.controller, req.params.method,req,res, next)
 
   # If all else failed, show 404 page
-  app.all '/*', (req, res)->
+  app.all '/*', (req, res, next)->
     console.warn "error 404: ", req.url
     res.statusCode = 404
-    res.render '404',404
+    routeMvc("error", "e404", req,res,next)
 
 # render the page based on controller name, method and id
 routeMvc = (controllerName, methodName, req, res, next)->
-  controllerName='index' if not controllerName?
+  controllerName="index" if not controllerName?
   controller=null
   try
     controller=require "./controllers/"+controllerName
